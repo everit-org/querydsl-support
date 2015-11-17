@@ -80,7 +80,7 @@
 
       <div class="bs-docs-featurette cookbook">
         <h2 id="usage_with_java_7" class="bs-docs-featurette-title">Usage with Java 7</h2>
-        <pre>return querydslSupport.execute(new QuerydslCallable&lt;Long&gt;() {
+        <pre class="prettyprint">return querydslSupport.execute(new QuerydslCallable&lt;Long&gt;() {
      @Override
      public Long call(Connection connection, Configuration configuration) throws SQLException {
         QResource qResource = new QResource("qResource");
@@ -93,7 +93,7 @@
 
       <div class="bs-docs-featurette cookbook">
         <h2 id="usage_with_java_8" class="bs-docs-featurette-title">Usage with Java 8</h2>
-        <pre>return querydslSupport.execute((connection, configuration) -> {
+        <pre class="prettyprint">return querydslSupport.execute((connection, configuration) -> {
     QResource qResource = new QResource("qResource");
     SQLInsertClause insertClause = new SQLInsertClause(connection, configuration, qResource);
     return insertClause.executeWithKey(qResource.resourceId);
