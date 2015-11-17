@@ -80,7 +80,7 @@
 
       <div class="bs-docs-featurette cookbook">
         <h2 id="usage_with_java_7" class="bs-docs-featurette-title">Usage with Java 7</h2>
-        <pre>return querydslSupport.execute(new QuerydslCallable<Long>() {
+        <pre>return querydslSupport.execute(new QuerydslCallable&lt;Long&gt;() {
      @Override
      public Long call(Connection connection, Configuration configuration) throws SQLException {
         QResource qResource = new QResource("qResource");
@@ -147,6 +147,7 @@
         s.parentNode.insertBefore(ga, s);
       })();
     </script>
+  <script src="http://www.everit.org/js/prettify/run_prettify.js"></script>
 </body>
 
 </html>
