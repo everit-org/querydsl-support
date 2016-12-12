@@ -15,6 +15,8 @@
  */
 package org.everit.persistence.querydsl.support;
 
+import com.querydsl.sql.Configuration;
+
 /**
  * An OSGi service that implements this interface can be used to write less codes and have less
  * references in the components that do database operations Empty line should be followed by tag on
@@ -27,13 +29,28 @@ package org.everit.persistence.querydsl.support;
 public interface QuerydslSupport {
 
   /**
-   * Executing the callback implementation in the way that SQLExceptions are translated by Querydsl.
+   * Calling a functional interface in the way that SQLExceptions are translated by Querydsl.
    *
    * @param callable
    *          The functional interface that should be implemented by the programmer.
    * @param <R>
    *          The type of an optional return value.
-   * @return An optional return value.
+   * @return A return value.
    */
   <R> R execute(QuerydslCallable<R> callable);
+
+  /**
+   * Executing a functional interface in the way that SQLExceptions are translated by Querydsl.
+   *
+   * @param runnable
+   *          The functional interface that should be implemented by the programmer.
+   */
+  void execute(QuerydslRunnable runnable);
+
+  /**
+   * Gives back the Querydsl configuration that is attached to this support instance.
+   *
+   * @return the Querydsl configuration that is used by this support instance.
+   */
+  Configuration getConfiguration();
 }

@@ -24,10 +24,8 @@ import com.querydsl.sql.Configuration;
  * Functional interface to be able to do database operations with the help of Querydsl in the way
  * that {@link SQLException}s are handled by the exception translator of Querydsl.
  *
- * @param <R>
- *          Type of the return value
  */
-public interface QuerydslCallable<R> {
+public interface QuerydslRunnable {
 
   /**
    * Function of the functional interface.
@@ -36,10 +34,9 @@ public interface QuerydslCallable<R> {
    *          An opened database connection.
    * @param configuration
    *          The Querydsl configuration that should be used for Querydsl queries.
-   * @return A return value.
    * @throws SQLException
    *           The exceptions that are thrown from the function calls of connection will be
    *           translated by Querydsl.
    */
-  R call(Connection connection, Configuration configuration) throws SQLException;
+  void run(Connection connection, Configuration configuration) throws SQLException;
 }

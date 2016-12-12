@@ -21,6 +21,7 @@ import java.sql.SQLException;
 import javax.sql.DataSource;
 
 import org.everit.persistence.querydsl.support.QuerydslCallable;
+import org.everit.persistence.querydsl.support.QuerydslRunnable;
 import org.everit.persistence.querydsl.support.QuerydslSupport;
 
 import com.querydsl.sql.Configuration;
@@ -54,5 +55,19 @@ public class QuerydslSupportImpl implements QuerydslSupport {
     } catch (SQLException e) {
       throw configuration.translate(e);
     }
+  }
+
+  @Override
+  public void execute(final QuerydslRunnable runnable) {
+    try (Connection connection = dataSource.getConnection()) {
+      runnable.run(connection, configuration);
+    } catch (SQLException e) {
+      throw configuration.translate(e);
+    }
+  }
+
+  @Override
+  public Configuration getConfiguration() {
+    return configuration;
   }
 }
